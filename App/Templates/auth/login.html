@@ -1,0 +1,84 @@
+{% extends './layaut.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block customcss %}
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+    }
+
+    .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .form-signin .checkbox {
+        font-weight: 400;
+    }
+
+    .form-signin .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .form-signin input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<main class="form-signin">
+
+    <form class="form-signin" action="/login" method="POST">
+
+        {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+        <br />
+        {% for message in messages %}
+        <div class="alert alert-primary alert-dismissible" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% endwith %}
+        <h1 class="h3 mb-3 fw-normal">Por favor ingrese</h1>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" name="username" placeholder="name@example.com">
+            <label for="floatingInput">escribe el usuario</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+            <label for="floatingPassword">escribe tu contraseña</label>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+
+    </form>
+    <main />
+
+    {% endblock %}

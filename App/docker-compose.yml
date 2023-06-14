@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    appweb:
+      build: .
+      ports:
+        - "5000:5000"
+      volumes:
+        - .:/Acortador_app
+      environment:
+        FLASK_ENV: development
+    MySQL:
+      image: "mysql:debian"
